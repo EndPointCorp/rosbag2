@@ -46,6 +46,8 @@ public:
   void set_filter(const StorageFilter & storage_filter) override = 0;
 
   void reset_filter() override = 0;
+
+  void seek(const rcutils_time_point_value_t & timestamp) override = 0;
 };
 
 }  // namespace storage_interfaces
