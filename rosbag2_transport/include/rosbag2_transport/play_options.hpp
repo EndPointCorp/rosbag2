@@ -47,6 +47,9 @@ public:
 
   // Sleep SEC seconds before play. Valid range > 0.0.
   float delay = 0.0;
+
+  // Offset start time in bag
+  float offset = 0.0;
 };
 
 }  // namespace rosbag2_transport

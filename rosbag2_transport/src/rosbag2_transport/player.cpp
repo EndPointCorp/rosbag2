@@ -229,9 +229,12 @@ void Player::play()
         std::this_thread::sleep_for(duration);
       }
       reader_->open(storage_options_, {"", rmw_get_serialization_format()});
+      // grab play_optinos_.offset and cast to nanoseconds (seconds * 1*e9)
+      const auto offset_time = std::chrono::nanoseconds((int)(play_options_.offset * 1000000000));
       const auto starting_time = std::chrono::duration_cast<std::chrono::nanoseconds>(
-        reader_->get_metadata().starting_time.time_since_epoch()).count();
+        reader_->get_metadata().starting_time.time_since_epoch() + offset_time).count();
       clock_->jump(starting_time);
+      reader_->seek(starting_time);
 
       storage_loading_future_ = std::async(std::launch::async, [this]() {load_storage_content();});
 
