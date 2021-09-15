@@ -79,7 +79,7 @@ public:
     filter_ = rosbag2_storage::StorageFilter();
   }
 
-  void seek(const rcutils_time_point_value_t & timestamp) override
+  void seek(const rcutils_time_point_value_t & timestamp)
   {
     seek_time_ = timestamp;
   }
