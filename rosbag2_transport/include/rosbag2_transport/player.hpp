@@ -128,6 +128,7 @@ public:
   /// \return true if valid time in bag duration and successful seek operation, otherwise false.
   ROSBAG2_TRANSPORT_PUBLIC
   bool seek(rcutils_time_point_value_t time_point);
+  rcutils_time_point_value_t query_time() const;
 
 protected:
   bool is_ready_to_play_from_queue_{false};

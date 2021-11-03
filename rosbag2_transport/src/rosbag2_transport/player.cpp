@@ -483,6 +483,10 @@ bool Player::seek(rcutils_time_point_value_t time_point)
   }
 }
 
+rcutils_time_point_value_t Player::query_time() const {
+  return clock_->now();
+}
+
 void Player::wait_for_filled_queue() const
 {
   while (
